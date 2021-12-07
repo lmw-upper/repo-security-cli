@@ -1,0 +1,4 @@
+click_shell
+click
+gtrending
+gitpython
