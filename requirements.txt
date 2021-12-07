@@ -6,3 +6,5 @@ dynacof[yaml]
 gtrending
 gitpython
 pip-check-reqs
+sanic
+sanic_openapi

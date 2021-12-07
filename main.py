@@ -1,28 +1,9 @@
-import click
-from click_shell import shell
+import os
 
-from adapters import git_adapter
-from controllers import get_final_risk_score
-
-
-@shell(prompt='>', intro='Starting my app...')
-def my_app():
-    pass
-
-
-@my_app.command(name='repo_info')
-@click.option('--n', default=1, help='Number of repos to fetch.')
-def repo_info(n):
-    repos = git_adapter.get_most_trending_repos(n)
-    for repo in repos:
-        score = get_final_risk_score(repo)
-        click.echo(f'{repo["name"]}, {score}')
-
-
-def main():
-    while True:
-        my_app()
-
+from services import cli_service, rest_service
 
 if __name__ == '__main__':
-    main()
+    if os.environ.get('SHOULD_RUN_REST'):
+        rest_service.main()
+    else:
+        cli_service.main()
