@@ -1,13 +1,14 @@
+from dynaconf import settings
+from git import Repo
+from gtrending import fetch_repos
 import os
 import shutil
-from git import Repo, GitCommandError
-from gtrending import fetch_repos
 from typing import List
 
 BASE_DIR = 'repos'
 
-PACKAGES_LANGUAGE = 'python'
-TRENDING_PERIOD = 'daily'
+PACKAGES_LANGUAGE = settings.GIT.PACKAGES_LANGUAGE
+TRENDING_PERIOD = settings.GIT.TRENDING_PERIOD
 
 shutil.rmtree(BASE_DIR, ignore_errors=True)
 os.mkdir(BASE_DIR)

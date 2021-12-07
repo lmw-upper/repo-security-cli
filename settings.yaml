@@ -1,0 +1,4 @@
+default:
+  GIT:
+    PACKAGES_LANGUAGE: python
+    TRENDING_PERIOD: daily

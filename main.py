@@ -16,7 +16,7 @@ def repo_info(n):
     repos = git_adapter.get_most_trending_repos(n)
     for repo in repos:
         score = get_final_risk_score(repo)
-        click.echo(f'{repo}{score}')
+        click.echo(f'{repo["name"]}, {score}')
 
 
 def main():
