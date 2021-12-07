@@ -2,3 +2,10 @@ default:
   GIT:
     PACKAGES_LANGUAGE: python
     TRENDING_PERIOD: daily
+  CONTROLLERS:
+    BANDIT:
+      SEVERITY_TO_SCORE_MULTIPLIER:
+        Undefined: 1
+        Low: 1
+        Medium: 3
+        High: 5

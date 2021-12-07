@@ -2,15 +2,13 @@ from typing import List
 
 from .abstract_controller import Controller
 from .unused_imports_controller import UnusedImportsController
+from .bandit_sast_controller import BanditSASTController
 from adapters import git_adapter
 
-controllers: List[Controller] = [UnusedImportsController()]
+controllers: List[Controller] = [UnusedImportsController(), BanditSASTController()]
 
 
 def get_final_risk_score(repo: dict):
-    score_sum = 0
     repo_path = git_adapter.clone_repo(repo['name'], repo['url'])
-    for controller in controllers:
-        score = controller.compute_risk_factor(repo, repo_path)
-        score_sum += score
-    return int(score_sum / len(controllers))
+    score = sum([controller.compute_risk_factor(repo, repo_path) for controller in controllers])
+    return score
