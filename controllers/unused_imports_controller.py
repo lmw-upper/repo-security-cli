@@ -11,4 +11,4 @@ class UnusedImportsController(Controller, ABC):
     def _compute_risk_factor(self, repo: dict, repo_path: str) -> int:
         commands = [f'cd {repo_path}', 'pip-extra-reqs .']
         unused_imports_raw = subprocess.run(';'.join(commands), capture_output=True, text=True, shell=True).stderr
-        return len(unused_imports_raw.split('\n')) - 2
+        return len(unused_imports_raw.split('\n')) - 2 if unused_imports_raw else 0
