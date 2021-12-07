@@ -1,6 +1,8 @@
+bandit
 click_shell
 click
-gtrending
-gitpython
 dynaconf
 dynacof[yaml]
+gtrending
+gitpython
+pip-check-reqs
