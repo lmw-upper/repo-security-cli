@@ -11,8 +11,8 @@ def my_app():
 
 @my_app.command(name='repo_info')
 @click.option('-n', default=1, help='Number of repos to fetch.')
-def repo_info(n):
-    for repo_name, score in fetch_repos_security_scores(n):
+def repo_info(number_of_repos):
+    for repo_name, score in fetch_repos_security_scores(number_of_repos):
         click.echo(f'{repo_name}, {score}')
 
 
